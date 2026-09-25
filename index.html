@@ -3,113 +3,368 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Endzone Empire – Regeln</title>
+  <title>Endzone Empire – Regelwerk</title>
   <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #111111;
-      --panel: #1b1b1b;
-      --line: #2e2a22;
-      --gold: #e2a93b;
-      --gold-soft: #f1cf7e;
-      --red: #b3221f;
-      --text: #ece8df;
-      --muted: #a39d90;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 17px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
-
-    header {
-      text-align: center;
-      padding: 40px 0 28px;
-      border-bottom: 3px solid var(--gold);
-      background: radial-gradient(ellipse at top, #241a12 0%, var(--bg) 70%);
-    }
-    header img { width: 220px; max-width: 60%; height: auto; }
-    header h1 {
-      font-family: Oswald, Impact, "Arial Narrow", sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--gold);
-      font-size: clamp(2rem, 6vw, 3rem);
-      margin: 12px 0 0;
-    }
-    header p { margin: 4px 0 0; color: var(--muted); }
-
-    main { padding: 40px 0 64px; }
-    section + section { margin-top: 48px; }
-    h2 {
-      font-family: Oswald, Impact, "Arial Narrow", sans-serif;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      font-size: 1.6rem;
-      color: var(--gold-soft);
-      margin: 0 0 20px;
-      padding-left: 14px;
-      border-left: 5px solid var(--red);
-    }
-
-    ol.rules { list-style: none; counter-reset: rule; margin: 0; padding: 0; }
-    ol.rules li {
-      counter-increment: rule;
-      display: flex;
-      gap: 16px;
-      align-items: baseline;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px 20px;
-      margin-bottom: 12px;
-    }
-    ol.rules li::before {
-      content: counter(rule);
-      flex: none;
-      font-family: Oswald, Impact, sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--gold);
-      min-width: 1.4em;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: .85rem;
-      padding: 24px 0 40px;
-      border-top: 1px solid var(--line);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <nav class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="logo.png" alt="">Endzone Empire</a>
+      <a class="tab active" href="index.html">Regelwerk</a>
+      <a class="tab" href="vorschlaege.html">Regelvorschläge</a>
+    </div>
+  </nav>
+
+  <header class="hero">
     <div class="wrap">
       <img src="logo.png" alt="Endzone Empire Logo">
-      <h1>Endzone Empire</h1>
-      <p>Regelwerk unserer Football-Fantasy-Ligen</p>
+      <h1>Regelwerk der Ligen des Endzone Empires</h1>
+      <p class="stand">Stand: 18.09.2026 · Commissioner: Julius (Chemnitz Broncos)</p>
     </div>
   </header>
 
   <main class="wrap">
-    <section id="saison-2027">
-      <h2>Regeländerung Saison 2027</h2>
-      <ol class="rules">
-        <li>Felix: 2 Taxi mehr</li>
-        <li>Julius: Rookiedraft auf 3 Runden beschränken</li>
-        <li>Erneute Abstimmung Medianmatch</li>
-        <li>Erneute Abstimmung 3. QB auf Taxi</li>
-        <li>Regeländerungen gelten IMMER für beide Ligen, es sei denn ausdrücklich anders formuliert.</li>
+    <p class="intro">Dieses Regelwerk gilt für beide Sleeper-Ligen des Endzone Empires, Redraft Empire und Dynasty Empire, ab der Saison 2026. Wo die Ligen sich unterscheiden, steht es ausdrücklich dabei. Alle Werte entsprechen den Sleeper-Einstellungen vom 18.09.2026. Bei Widersprüchen gilt, was in Sleeper eingestellt ist, bis der Commissioner die Einstellung anpasst.</p>
+
+    <div class="toc">
+      <ol>
+        <li><a href="#ueberblick">Ligen im Überblick</a></li>
+        <li><a href="#spielbetrieb">Spielbetrieb</a></li>
+        <li><a href="#kader">Kader und Aufstellung</a></li>
+        <li><a href="#punkte">Punktewertung</a></li>
+        <li><a href="#waiver">Waiver und Free Agents</a></li>
+        <li><a href="#trades">Trades</a></li>
+        <li><a href="#ir">Injured Reserve (IR)</a></li>
+        <li><a href="#playoffs">Playoffs</a></li>
+        <li><a href="#draft">Draft</a></li>
+        <li><a href="#dynasty">Dynasty-Sonderregeln</a></li>
+        <li><a href="#organisation">Liga-Organisation</a></li>
       </ol>
+    </div>
+
+    <section id="ueberblick">
+      <h2>1. Ligen im Überblick</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th></th><th>Redraft Empire</th><th>Dynasty Empire</th></tr></thead>
+          <tbody>
+            <tr><td>Ligatyp</td><td>Redraft (Kader werden jede Saison zurückgesetzt)</td><td>Dynasty (Kader bleiben bestehen)</td></tr>
+            <tr><td>Teams</td><td>14</td><td>14</td></tr>
+            <tr><td>Format</td><td>PPR, TE-Premium</td><td>Superflex, PPR, TE-Premium, IDP</td></tr>
+            <tr><td>Divisionen</td><td>keine</td><td>keine</td></tr>
+            <tr><td>Waiver</td><td>Reverse Standings</td><td>FAAB, 100 $ Budget</td></tr>
+            <tr><td>Trade-Deadline</td><td>Woche 11</td><td>Woche 12</td></tr>
+            <tr><td>Playoffs</td><td>7 Teams ab Woche 15</td><td>7 Teams ab Woche 15</td></tr>
+            <tr><td>Commissioner</td><td>Julius (Chemnitz Broncos)</td><td>Julius (Chemnitz Broncos)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="spielbetrieb">
+      <h2>2. Spielbetrieb</h2>
+      <p>Die Regular Season läuft von Woche 1 bis Woche 14, danach folgen die Playoffs (Abschnitt 8). Das gilt für beide Ligen.</p>
+      <ol class="steps">
+        <li><strong>Head-to-Head:</strong> Jede Woche spielt jedes Team gegen einen Gegner. Wer mehr Punkte hat, gewinnt.</li>
+        <li><strong>Median-Spiel:</strong> Zusätzlich spielt jedes Team jede Woche gegen den Liga-Median. Liegt die Punktzahl über dem Median, gibt es einen weiteren Sieg, sonst eine Niederlage. Pro Woche sind also zwei Siege möglich.</li>
+        <li><strong>Tabelle:</strong> Die Platzierung ergibt sich aus der Bilanz aus Siegen und Niederlagen, inklusive Median-Spiele. Bei Gleichstand entscheidet die Tiebreak-Regel von Sleeper (Punkte für).</li>
+        <li><strong>Aufstellung:</strong> Jeder Manager stellt wöchentlich selbst auf. Spieler sind ab dem Kickoff ihres Spiels gesperrt.</li>
+      </ol>
+    </section>
+
+    <section id="kader">
+      <h2>3. Kader und Aufstellung</h2>
+      <p>Redraft stellt 9 Starter auf, Dynasty 13 (mit Superflex und 3 IDP-Spielern).</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Position</th><th>Redraft Empire</th><th>Dynasty Empire</th></tr></thead>
+          <tbody>
+            <tr><td>QB</td><td>1</td><td>1</td></tr>
+            <tr><td>RB</td><td>2</td><td>2</td></tr>
+            <tr><td>WR</td><td>2</td><td>2</td></tr>
+            <tr><td>TE</td><td>1</td><td>1</td></tr>
+            <tr><td>Flex (WR/RB/TE)</td><td>1</td><td>1</td></tr>
+            <tr><td>Superflex (QB/WR/RB/TE)</td><td>–</td><td>1</td></tr>
+            <tr><td>K</td><td>1</td><td>1</td></tr>
+            <tr><td>DEF</td><td>1</td><td>1</td></tr>
+            <tr><td>DL</td><td>–</td><td>1</td></tr>
+            <tr><td>LB</td><td>–</td><td>1</td></tr>
+            <tr><td>DB</td><td>–</td><td>1</td></tr>
+            <tr class="total"><td>Starter gesamt</td><td>9</td><td>13</td></tr>
+            <tr><td>Bank</td><td>6</td><td>8</td></tr>
+            <tr><td>IR</td><td>3</td><td>3</td></tr>
+            <tr><td>Taxi Squad</td><td>–</td><td>2</td></tr>
+            <tr class="total"><td>Kadergröße (ohne IR/Taxi)</td><td>15</td><td>21</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="punkte">
+      <h2>4. Punktewertung</h2>
+      <p>Beide Ligen werten Offense, Kicker, Defense und Special Teams identisch. Dynasty Empire hat zusätzlich IDP-Wertung. Nicht aufgeführte Statistiken geben 0 Punkte.</p>
+
+      <h3>Offense</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Statistik</th><th>Punkte</th></tr></thead>
+          <tbody>
+            <tr><td>Passing Yards</td><td>1 pro 25 Yards (0,04 pro Yard)</td></tr>
+            <tr><td>Passing TD</td><td>4</td></tr>
+            <tr><td>Interception geworfen</td><td>-1</td></tr>
+            <tr><td>Rushing Yards</td><td>1 pro 10 Yards (0,1 pro Yard)</td></tr>
+            <tr><td>Rushing TD</td><td>6</td></tr>
+            <tr><td>Reception (PPR)</td><td>1</td></tr>
+            <tr><td>TE-Premium: Bonus pro Reception für TE</td><td>+1 (TE also 2 pro Catch)</td></tr>
+            <tr><td>Receiving Yards</td><td>1 pro 10 Yards (0,1 pro Yard)</td></tr>
+            <tr><td>Receiving TD</td><td>6</td></tr>
+            <tr><td>2-Point Conversion (Pass, Lauf, Catch)</td><td>2</td></tr>
+            <tr><td>Fumble (jeder, nicht nur verlorene)</td><td>-1</td></tr>
+            <tr><td>Fumble Recovery TD</td><td>6</td></tr>
+            <tr><td>Special Teams TD (Spieler)</td><td>6</td></tr>
+            <tr><td>Special Teams Forced Fumble / Fumble Recovery (Spieler)</td><td>je 1</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Kicker</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Statistik</th><th>Punkte</th></tr></thead>
+          <tbody>
+            <tr><td>FG 0–39 Yards</td><td>3</td></tr>
+            <tr><td>FG 40–49 Yards</td><td>4</td></tr>
+            <tr><td>FG 50–59 Yards</td><td>5</td></tr>
+            <tr><td>FG 60+ Yards</td><td>6</td></tr>
+            <tr><td>PAT verwandelt</td><td>1</td></tr>
+            <tr><td>FG verschossen</td><td>-1</td></tr>
+            <tr><td>PAT verschossen</td><td>-1</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Team-Defense (DEF)</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Statistik</th><th>Punkte</th></tr></thead>
+          <tbody>
+            <tr><td>Defense TD</td><td>6</td></tr>
+            <tr><td>Special Teams TD</td><td>6</td></tr>
+            <tr><td>Sack</td><td>1</td></tr>
+            <tr><td>Interception</td><td>2</td></tr>
+            <tr><td>Fumble Recovery</td><td>2</td></tr>
+            <tr><td>Forced Fumble</td><td>1</td></tr>
+            <tr><td>Safety</td><td>2</td></tr>
+            <tr><td>Blocked Kick</td><td>2</td></tr>
+            <tr><td>Special Teams Forced Fumble / Fumble Recovery</td><td>je 1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Zugelassene Punkte</th><th>Punkte</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>10</td></tr>
+            <tr><td>1–6</td><td>7</td></tr>
+            <tr><td>7–13</td><td>4</td></tr>
+            <tr><td>14–20</td><td>1</td></tr>
+            <tr><td>21–27</td><td>0</td></tr>
+            <tr><td>28–34</td><td>-1</td></tr>
+            <tr><td>35+</td><td>-4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>IDP (nur Dynasty Empire)</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Statistik</th><th>Punkte</th></tr></thead>
+          <tbody>
+            <tr><td>Solo Tackle</td><td>2</td></tr>
+            <tr><td>Assisted Tackle</td><td>1</td></tr>
+            <tr><td>Tackle for Loss</td><td>2</td></tr>
+            <tr><td>Hit on QB</td><td>1</td></tr>
+            <tr><td>Sack</td><td>6</td></tr>
+            <tr><td>Pass Defended</td><td>3</td></tr>
+            <tr><td>Interception</td><td>6</td></tr>
+            <tr><td>Forced Fumble</td><td>3</td></tr>
+            <tr><td>Fumble Recovery</td><td>3</td></tr>
+            <tr><td>Safety</td><td>3</td></tr>
+            <tr><td>Blocked Punt, PAT oder FG</td><td>3</td></tr>
+            <tr><td>IDP TD</td><td>6</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="waiver">
+      <h2>5. Waiver und Free Agents</h2>
+      <p>Waiver-Claims werden in beiden Ligen mittwochs um 9:00 Uhr (MESZ) abgearbeitet. Danach sind vereinslose Spieler bis zum Kickoff ihres Spiels als Free Agents frei verfügbar („first come, first served“).</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th></th><th>Redraft Empire</th><th>Dynasty Empire</th></tr></thead>
+          <tbody>
+            <tr><td>Waiver-System</td><td>Reverse Standings: das schlechteste Team hat Vorrang</td><td>FAAB: blindes Bieten, höchstes Gebot gewinnt</td></tr>
+            <tr><td>Budget</td><td>–</td><td>100 $ pro Saison, Mindestgebot 0 $</td></tr>
+            <tr><td>Waiver-Zeit nach Drop</td><td>2 Tage</td><td>2 Tage</td></tr>
+            <tr><td>Bankspieler nach Spielbeginn droppen</td><td>erlaubt</td><td>gesperrt</td></tr>
+            <tr><td>Moves vor dem Draft</td><td>–</td><td>nicht erlaubt</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="points">
+        <li>Spieler, deren Spiel der Woche begonnen hat, sind bis zum nächsten Waiver-Durchlauf gesperrt.</li>
+        <li>Ein gedroppter Spieler landet für 2 Tage auf Waivers, bevor ihn jemand als Free Agent holen kann.</li>
+      </ul>
+    </section>
+
+    <section id="trades">
+      <h2>6. Trades</h2>
+      <p>Trades werden sofort nach Annahme durchgeführt. Es gibt keine Prüf- oder Vetofrist.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th></th><th>Redraft Empire</th><th>Dynasty Empire</th></tr></thead>
+          <tbody>
+            <tr><td>Trade-Deadline</td><td>Woche 11</td><td>Woche 12</td></tr>
+            <tr><td>Draft-Picks handelbar</td><td>ja</td><td>ja</td></tr>
+            <tr><td>Prüffrist (Review)</td><td>keine</td><td>keine</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ir">
+      <h2>7. Injured Reserve (IR)</h2>
+      <p>Jedes Team hat in beiden Ligen 3 IR-Plätze. Auf IR dürfen nur Spieler mit dem Status IR (Injured Reserve).</p>
+      <ul class="points">
+        <li>Nicht erlaubt: Status Out, Doubtful, Suspended, NA sowie DNR, Holdout oder Opt-out.</li>
+        <li>Kehrt ein Spieler von IR zurück, muss er aktiviert werden. Solange der Kader dadurch zu groß ist, sind keine weiteren Moves möglich.</li>
+      </ul>
+    </section>
+
+    <section id="playoffs">
+      <h2>8. Playoffs</h2>
+      <p>In beiden Ligen kommen 7 von 14 Teams in die Playoffs, die in den Wochen 15 bis 17 gespielt werden. Das Finale findet in Woche 17 statt.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Woche</th><th>Runde</th></tr></thead>
+          <tbody>
+            <tr><td>15</td><td>Wildcard: Seeds 2–7 spielen, Seed 1 hat ein Freilos</td></tr>
+            <tr><td>16</td><td>Halbfinale</td></tr>
+            <tr><td>17</td><td>Finale und Spiel um Platz 3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="points">
+        <li><strong>Seeding:</strong> nach Tabellenplatz am Ende von Woche 14.</li>
+        <li><strong>Re-Seed:</strong> Nach jeder Runde spielt das höchste verbleibende Seed gegen das niedrigste.</li>
+        <li><strong>Eine Woche pro Runde.</strong></li>
+        <li><strong>Consolation Bracket:</strong> Die 7 Teams ohne Playoffs spielen um die Plätze 8 bis 14. Wer gewinnt, kommt weiter.</li>
+      </ul>
+    </section>
+
+    <section id="draft">
+      <h2>9. Draft</h2>
+      <p>Beide Ligen draften als Snake Draft: Die Reihenfolge kehrt sich jede Runde um. Der Commissioner legt den Termin fest.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th></th><th>Redraft Empire</th><th>Dynasty Empire (Rookie Draft)</th></tr></thead>
+          <tbody>
+            <tr><td>Art</td><td>Snake</td><td>Snake</td></tr>
+            <tr><td>Runden</td><td>15</td><td>5</td></tr>
+            <tr><td>Zeit pro Pick</td><td>60 Sekunden</td><td>2 Minuten</td></tr>
+            <tr><td>Spielerpool</td><td>alle Spieler</td><td>Rookies und Free Agents</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="points">
+        <li><strong>Draft-Reihenfolge (umgekehrtes Kentucky Derby):</strong> Die Teams wählen ihren Draft-Platz in umgekehrter Reihenfolge des Endstands der Vorsaison (nach den Playoffs!). Das schlechteste Team sucht sich seinen Platz zuerst aus, dann das zweitschlechteste und so weiter bis zum Champion. Danach wird als Snake gedraftet.</li>
+        <li>Wer nicht rechtzeitig pickt, bekommt automatisch den besten verfügbaren Spieler laut eigener Queue oder Sleeper-Ranking.</li>
+        <li>Draft-Picks dürfen in beiden Ligen gehandelt werden.</li>
+      </ul>
+    </section>
+
+    <section id="dynasty">
+      <h2>10. Dynasty-Sonderregeln</h2>
+      <p>In Dynasty Empire bleiben alle Kader über die Saison hinaus bestehen. Neue Spieler kommen über den jährlichen Rookie Draft und die Waiver.</p>
+      <ul class="points">
+        <li><strong>Taxi Squad:</strong> 2 Plätze. Erlaubt sind Spieler mit höchstens 2 Jahren NFL-Erfahrung, auch Nicht-Rookies. Spieler auf dem Taxi Squad punkten nicht und zählen nicht zur Kadergröße.</li>
+        <li><strong>Taxi-Deadline:</strong> Spieler können nur bis zum Start der Regular Season auf den Taxi Squad gesetzt werden. Danach ist nur noch das Hochziehen in den aktiven Kader möglich.</li>
+        <li><strong>Supplemental Draft:</strong> eingestellt auf 5 Runden, für den Fall, dass ein Zusatz-Draft angesetzt wird.</li>
+        <li><strong>Keine Moves vor dem Rookie Draft:</strong> Waiver und Free Agents sind bis nach dem Draft gesperrt.</li>
+      </ul>
+    </section>
+
+    <section id="organisation">
+      <h2>11. Liga-Organisation</h2>
+      <p>Die folgenden Regeln gelten für beide Ligen, auch wenn sie nicht in Sleeper eingestellt sind.</p>
+
+      <h3>Commissioner</h3>
+      <ul class="points">
+        <li>Commissioner beider Ligen ist Julius (Chemnitz Broncos). Er hat immer das letzte Wort und trifft die finalen Entscheidungen.</li>
+        <li>Ist der Commissioner nicht da, vertreten ihn Felix (Dresden Buzzards) und Eric (Chemnitz Cheetahs).</li>
+      </ul>
+
+      <h3>Abstimmungen</h3>
+      <ul class="points">
+        <li>Alle Regeln können per Abstimmung geändert werden. Auf dieselbe Weise können neue Regeln hinzugefügt und bestehende abgeschafft werden.</li>
+        <li>Jede Abstimmung muss vorher vom Commissioner genehmigt werden, wenn er sie nicht selbst ansetzt. Nicht genehmigte Abstimmungen sind ungültig.</li>
+        <li>Es gilt die relative Mehrheit. Ein Vorschlag ist beschlossen, sobald eine Antwortmöglichkeit uneinholbar vorne liegt.</li>
+        <li>Regelanpassungen gelten immer für beide Ligen gleichermaßen, sofern in der Abstimmung oder in einer vorherigen Absprache nichts anderes vereinbart wurde.</li>
+      </ul>
+
+      <h3>Saison und Regeländerungen</h3>
+      <ul class="points">
+        <li>Die Saison dauert offiziell vom Draftstart bis eine Woche nach dem Super Bowl. Danach beginnt die Offseason.</li>
+        <li>Während der Saison gibt es keine Regeländerungen.</li>
+        <li>Regelwünsche sammelt der Commissioner während der Saison in einem Dokument, das jedes Mitglied jederzeit auf Nachfrage einsehen kann. Nach der Saison werden sie zur Abstimmung gestellt. <a href="vorschlaege.html">Zu den Regelvorschlägen →</a></li>
+        <li>In der Offseason können neue Änderungswünsche eingebracht werden.</li>
+      </ul>
+
+      <h3>Regelauskünfte</h3>
+      <ul class="points">
+        <li>Verbindliche Regelauskünfte im Liga-Chat gibt nur der Commissioner.</li>
+        <li>Auskünfte anderer Mitglieder sind ohne Gewähr. Im Streitfall kann sich niemand darauf berufen.</li>
+      </ul>
+
+      <h3>Einsatz und Preise</h3>
+      <p>Der Einsatz beträgt 15 € pro Mitglied. Der Commissioner sammelt das Geld ein, bestellt die Preise und übergibt sie an die Gewinner.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Liga</th><th>Einsatz</th><th>Preis für den Champion</th></tr></thead>
+          <tbody>
+            <tr><td>Dynasty Empire</td><td class="num">5 €</td><td>Championship-Ring</td></tr>
+            <tr><td>Redraft Empire</td><td class="num">10 €</td><td>Trikot eines der 2 besten Spieler aus dem Kader des Champions</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Mitglieder</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Team</th><th>Name</th><th>Rolle</th></tr></thead>
+          <tbody>
+            <tr><td>Chemnitz Broncos</td><td>Julius</td><td>Commissioner</td></tr>
+            <tr><td>Dresden Buzzards</td><td>Felix</td><td>Stellvertreter</td></tr>
+            <tr><td>Chemnitz Cheetahs</td><td>Eric</td><td>Stellvertreter</td></tr>
+            <tr><td>Rietberger Seahawks</td><td>Marc</td><td></td></tr>
+            <tr><td>Bannewitz Bisons</td><td>Nele</td><td></td></tr>
+            <tr><td>Lewin9</td><td>Lewin</td><td></td></tr>
+            <tr><td>Hamburg Ravens</td><td>Levi</td><td></td></tr>
+            <tr><td>Brunn Ravens</td><td>Jonas</td><td></td></tr>
+            <tr><td>Dortmund Kohlekrieger</td><td>Leonard</td><td></td></tr>
+            <tr><td>Haiterbach Tigers</td><td>Simon H.</td><td></td></tr>
+            <tr><td>Bremen Legion of Boom</td><td>Lennox</td><td></td></tr>
+            <tr><td>Berlin Ravens</td><td>Benni</td><td></td></tr>
+            <tr><td>Ulm Sparrows</td><td>Simon F.</td><td></td></tr>
+            <tr><td>Flensburg Suns</td><td>Max</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </main>
 

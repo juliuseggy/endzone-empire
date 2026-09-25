@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endzone Empire – Regelvorschläge</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="logo.png" alt="">Endzone Empire</a>
+      <a class="tab" href="index.html">Regelwerk</a>
+      <a class="tab active" href="vorschlaege.html">Regelvorschläge</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Regelvorschläge Saison 2027</h1>
+      <p>Hier sammeln wir alle Regelwünsche. Nach der Saison werden sie zur Abstimmung gestellt.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="einreichen">
+      <h2>Vorschlag einreichen</h2>
+      <form id="form" class="card" autocomplete="on">
+        <div class="row">
+          <div class="field">
+            <label for="team">Teamname</label>
+            <input id="team" name="team" list="teams" maxlength="60" required>
+            <datalist id="teams"></datalist>
+          </div>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" maxlength="60" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="vorschlag">Regelvorschlag</label>
+          <textarea id="vorschlag" name="vorschlag" maxlength="2000" required placeholder="Was soll sich ändern und warum?"></textarea>
+        </div>
+        <button class="primary" type="submit" id="submit">Einreichen</button>
+        <p class="hint" style="margin:12px 0 0">Eingereichte Vorschläge sind für alle sichtbar. Ändern oder löschen kann sie nur der Commissioner. Schreib ihm, wenn du dich vertippt hast.</p>
+        <div id="formMsg" class="msg" hidden></div>
+      </form>
+    </section>
+
+    <section id="liste">
+      <h2>Eingereichte Vorschläge</h2>
+      <div id="list"><p class="hint">Lade Vorschläge …</p></div>
+    </section>
+  </main>
+
+  <footer>© Endzone Empire</footer>
+
+  <script src="config.js"></script>
+  <script>
+    const MEMBERS = [
+      ['Chemnitz Broncos', 'Julius'], ['Dresden Buzzards', 'Felix'], ['Chemnitz Cheetahs', 'Eric'],
+      ['Rietberger Seahawks', 'Marc'], ['Bannewitz Bisons', 'Nele'], ['Lewin9', 'Lewin'],
+      ['Hamburg Ravens', 'Levi'], ['Brunn Ravens', 'Jonas'], ['Dortmund Kohlekrieger', 'Leonard'],
+      ['Haiterbach Tigers', 'Simon H.'], ['Bremen Legion of Boom', 'Lennox'], ['Berlin Ravens', 'Benni'],
+      ['Ulm Sparrows', 'Simon F.'], ['Flensburg Suns', 'Max'],
+    ];
+    const API = SUPABASE_URL + '/rest/v1/regelvorschlaege';
+    // Neue Supabase-Keys (sb_publishable_…) gehen nur als apikey, alte JWT-Keys zusätzlich als Bearer.
+    const HEADERS = SUPABASE_ANON_KEY.startsWith('sb_')
+      ? { apikey: SUPABASE_ANON_KEY }
+      : { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY };
+
+    const teamInput = document.getElementById('team');
+    const nameInput = document.getElementById('name');
+    document.getElementById('teams').append(...MEMBERS.map(([team]) => new Option(team)));
+    teamInput.addEventListener('input', () => {
+      const m = MEMBERS.find(([team]) => team === teamInput.value);
+      if (m && !nameInput.value) nameInput.value = m[1];
+    });
+
+    function row(label, value) {
+      const dt = document.createElement('dt'); dt.textContent = label;
+      const dd = document.createElement('dd'); dd.textContent = value;
+      return [dt, dd];
+    }
+
+    async function loadList() {
+      const list = document.getElementById('list');
+      try {
+        const res = await fetch(API + '?select=name,team,vorschlag,created_at&order=created_at.asc', { headers: HEADERS });
+        if (!res.ok) throw new Error(res.status);
+        const items = await res.json();
+        list.replaceChildren();
+        if (!items.length) {
+          list.innerHTML = '<p class="hint">Noch keine Vorschläge eingereicht.</p>';
+          return;
+        }
+        for (const it of items) {
+          const card = document.createElement('article');
+          card.className = 'proposal';
+          const dl = document.createElement('dl');
+          dl.append(...row('Name:', it.name), ...row('Teamname:', it.team), ...row('Regelvorschlag:', it.vorschlag));
+          const date = document.createElement('div');
+          date.className = 'date';
+          date.textContent = 'Eingereicht am ' + new Date(it.created_at).toLocaleDateString('de-DE');
+          card.append(dl, date);
+          list.append(card);
+        }
+      } catch (e) {
+        list.innerHTML = '<p class="msg err">Die Vorschläge konnten gerade nicht geladen werden. Bitte später nochmal versuchen.</p>';
+      }
+    }
+
+    document.getElementById('form').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const btn = document.getElementById('submit');
+      const msg = document.getElementById('formMsg');
+      const data = {
+        name: nameInput.value.trim(),
+        team: teamInput.value.trim(),
+        vorschlag: document.getElementById('vorschlag').value.trim(),
+      };
+      if (!data.name || !data.team || !data.vorschlag) return;
+      btn.disabled = true;
+      msg.hidden = true;
+      try {
+        const res = await fetch(API, {
+          method: 'POST',
+          headers: { ...HEADERS, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(res.status);
+        ev.target.reset();
+        msg.className = 'msg ok';
+        msg.textContent = 'Danke! Dein Vorschlag wurde eingereicht.';
+        loadList();
+      } catch (e) {
+        msg.className = 'msg err';
+        msg.textContent = 'Das hat nicht geklappt. Bitte nochmal versuchen oder dem Commissioner Bescheid geben.';
+      }
+      msg.hidden = false;
+      btn.disabled = false;
+    });
+
+    loadList();
+  </script>
+</body>
+</html>
