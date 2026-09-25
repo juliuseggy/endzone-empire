@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endzone Empire – Regeln</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111111;
+      --panel: #1b1b1b;
+      --line: #2e2a22;
+      --gold: #e2a93b;
+      --gold-soft: #f1cf7e;
+      --red: #b3221f;
+      --text: #ece8df;
+      --muted: #a39d90;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+    header {
+      text-align: center;
+      padding: 40px 0 28px;
+      border-bottom: 3px solid var(--gold);
+      background: radial-gradient(ellipse at top, #241a12 0%, var(--bg) 70%);
+    }
+    header img { width: 220px; max-width: 60%; height: auto; }
+    header h1 {
+      font-family: Oswald, Impact, "Arial Narrow", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gold);
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin: 12px 0 0;
+    }
+    header p { margin: 4px 0 0; color: var(--muted); }
+
+    main { padding: 40px 0 64px; }
+    section + section { margin-top: 48px; }
+    h2 {
+      font-family: Oswald, Impact, "Arial Narrow", sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: 1.6rem;
+      color: var(--gold-soft);
+      margin: 0 0 20px;
+      padding-left: 14px;
+      border-left: 5px solid var(--red);
+    }
+
+    ol.rules { list-style: none; counter-reset: rule; margin: 0; padding: 0; }
+    ol.rules li {
+      counter-increment: rule;
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    ol.rules li::before {
+      content: counter(rule);
+      flex: none;
+      font-family: Oswald, Impact, sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+      min-width: 1.4em;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+      padding: 24px 0 40px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <img src="logo.png" alt="Endzone Empire Logo">
+      <h1>Endzone Empire</h1>
+      <p>Regelwerk unserer Football-Fantasy-Ligen</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="saison-2027">
+      <h2>Regeländerung Saison 2027</h2>
+      <ol class="rules">
+        <li>Felix: 2 Taxi mehr</li>
+        <li>Julius: Rookiedraft auf 3 Runden beschränken</li>
+        <li>Erneute Abstimmung Medianmatch</li>
+        <li>Erneute Abstimmung 3. QB auf Taxi</li>
+        <li>Regeländerungen gelten IMMER für beide Ligen, es sei denn ausdrücklich anders formuliert.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>© Endzone Empire</footer>
+</body>
+</html>
