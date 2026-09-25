@@ -146,7 +146,9 @@ footer {
 }
 
 /* Champions */
-.champ { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+.champ-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 640px) { .champ-row { grid-template-columns: 1fr; } }
+.champ { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 10px; padding: 20px; }
 .champ-head { margin-bottom: 16px; }
 .champ-head .league {
   display: inline-block; font-family: Oswald, Impact, "Arial Narrow", sans-serif; text-transform: uppercase;
@@ -154,7 +156,7 @@ footer {
 }
 .champ-head h3 { font-size: 1.8rem; color: var(--gold-soft); margin: 8px 0 0; }
 .champ-head .team { color: var(--muted); margin: 0; }
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
 .gallery a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
 .gallery img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .2s; }
 .gallery a:hover img { transform: scale(1.03); }
