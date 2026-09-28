@@ -150,7 +150,7 @@ footer {
 @media (max-width: 640px) { .champ-row { grid-template-columns: 1fr; } }
 .champ { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 10px; padding: 20px; }
 .champ-head { margin-bottom: 16px; }
-.champ-head .league {
+.league {
   display: inline-block; font-family: Oswald, Impact, "Arial Narrow", sans-serif; text-transform: uppercase;
   letter-spacing: .06em; font-size: .85rem; color: var(--bg); background: var(--gold); border-radius: 4px; padding: 2px 10px;
 }
@@ -164,3 +164,20 @@ footer {
   display: grid; place-items: center; aspect-ratio: 3 / 4; border: 2px dashed #3a352b; border-radius: 8px;
   color: var(--muted); font-family: Oswald, Impact, "Arial Narrow", sans-serif; text-transform: uppercase; letter-spacing: .06em;
 }
+
+/* Regelverstöße */
+tr.flag td { background: #2e1413; color: var(--text); font-weight: 600; }
+.violation {
+  display: grid; grid-template-columns: 1fr 200px; gap: 20px; align-items: start;
+  background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--red);
+  border-radius: 10px; padding: 20px; margin-bottom: 16px;
+}
+@media (max-width: 560px) { .violation { grid-template-columns: 1fr; } }
+.violation h3 { font-size: 1.4rem; color: var(--gold-soft); margin: 8px 0 12px; }
+.violation h3 .who { color: var(--muted); font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 400; margin-left: 6px; }
+.violation dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; }
+.violation dt { color: var(--muted); }
+.violation dd { margin: 0; }
+.evidence { display: block; text-decoration: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.evidence img { display: block; width: 100%; max-height: 360px; object-fit: cover; object-position: top; }
+.evidence span { display: block; text-align: center; padding: 6px; font-size: .9rem; background: var(--panel-2); }
