@@ -181,3 +181,6 @@ tr.flag td { background: #2e1413; color: var(--text); font-weight: 600; }
 .evidence { display: block; text-decoration: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .evidence img { display: block; width: 100%; max-height: 360px; object-fit: cover; object-position: top; }
 .evidence span { display: block; text-align: center; padding: 6px; font-size: .9rem; background: var(--panel-2); }
+.evidence-list { display: grid; gap: 10px; }
+.evidence-list .evidence img { max-height: 160px; }
+@media (max-width: 560px) { .evidence-list { grid-template-columns: repeat(3, 1fr); } }
