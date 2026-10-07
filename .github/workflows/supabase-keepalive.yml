@@ -1,0 +1,21 @@
+# Fragt die Regelvorschläge zweimal pro Woche ab, damit Supabase (Free-Tarif)
+# das Projekt nicht wegen Inaktivität pausiert. URL und Key kommen aus config.js.
+name: Supabase wach halten
+
+on:
+  schedule:
+    - cron: '0 6 * * 1,4'  # Montag und Donnerstag, 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Datenbank abfragen
+        run: |
+          URL=$(grep -oP "SUPABASE_URL\s*=\s*'\K[^']+" config.js)
+          KEY=$(grep -oP "SUPABASE_ANON_KEY\s*=\s*'\K[^']+" config.js)
+          curl --fail --silent --show-error --max-time 30 \
+            "$URL/rest/v1/regelvorschlaege?select=id&limit=1" \
+            -H "apikey: $KEY"
